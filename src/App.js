@@ -9,10 +9,8 @@ const App = () => {
   const [id, setId] = React.useState("");
   const [prompt, setPrompt] = React.useState("");
   const [data, setData] = React.useState("");
-
-
   const [items, setItems] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(true);
+
 
   React.useEffect(() => {
     if (data) {
@@ -21,8 +19,8 @@ const App = () => {
         prompt: prompt,
         data: data
       }
-      const updatedData = [...items, newData];
-      setItems(updatedData);
+      const updatedInfo = [...items, newData];
+      setItems(updatedInfo);
     }
   }, [data]);
 
@@ -46,7 +44,6 @@ const App = () => {
       .then((res) => {
         setId(uuidv4());
         setPrompt(prompt);
-        console.log(res.data.choices[0].text.trim())
         setData(res.data.choices[0].text.trim());
       })
       .catch((e) => console.log(e.message));
@@ -59,7 +56,6 @@ const App = () => {
         <main>
           <h1>Fun with AI</h1>
           <p >Shopify Challenge</p>
-
           <form onSubmit={onSubmit}>
             <label>Enter prompt:</label>
             <textarea
@@ -74,9 +70,8 @@ const App = () => {
               Submit
             </button>
           </form>
-
           <ul>
-         {items.map(({ id, prompt, data }) => (
+            {items.map(({ id, prompt, data }) => (
               <li key={id} className="wrapper-response">
                 <h4>Prompt: {prompt}</h4>
                 <h4>Response: {data}</h4>
