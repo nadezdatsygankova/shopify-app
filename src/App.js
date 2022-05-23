@@ -28,7 +28,7 @@ const App = () => {
     e.preventDefault();
 
     const configuration = new Configuration({
-      apiKey: "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",
+      apiKey: "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",
     });
     const openApi = new OpenAIApi(configuration);
 
