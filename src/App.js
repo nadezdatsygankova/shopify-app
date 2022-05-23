@@ -28,7 +28,7 @@ const App = () => {
     e.preventDefault();
 
     const configuration = new Configuration({
-      apiKey: "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",
+      apiKey: process.env.REACT_APP_API_KEY,
     });
     const openApi = new OpenAIApi(configuration);
 
